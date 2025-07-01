@@ -45,7 +45,7 @@
   /* ───────────────  HERO  ─────────────── */
   .hero{
     height:100vh;
-    background:url("fondo.png") center/cover fixed;
+    background:url("images/fondo.png") center/cover fixed;
     display:grid;
     place-items:center;
     text-align:center;
