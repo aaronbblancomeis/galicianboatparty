@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Galician Boat Party</title>
+
+  <!--  Google Fonts  -->
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+
+  <style>
+  /* ───────────────  RESET BÁSICO  ─────────────── */
+  *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+  html,body{height:100%;width:100%;font-family:'Roboto',sans-serif;overflow-x:hidden;}
+
+  /* ───────────────  VARIABLES  ─────────────── */
+  :root{
+    --pink:#ff0086;
+    --pink-dark:#e60076;
+    --ink:#0d0d25;
+    --white:#fff;
+  }
+
+  /* ───────────────  NAVBAR  ─────────────── */
+  nav{
+    position:fixed;top:0;left:0;right:0;
+    backdrop-filter:blur(6px);
+    padding:1rem clamp(1rem,4vw,4rem);
+    display:grid;
+    grid-template-columns: 1fr auto;
+    align-items:center;
+    z-index:100;
+  }
+  .nav-links{
+    justify-self:center;
+    display:grid;
+    grid-auto-flow:column;
+    gap:2rem;
+    text-transform:uppercase;
+    font-weight:700;
+    font-size:.85rem;
+  }
+  .nav-links a{color:var(--white);text-decoration:none;transition:opacity .3s;}
+  .nav-links a:hover{opacity:.7;}
+  .btn-tickets{
+    background:var(--pink);
+    padding:.5rem 1rem;
+    border-radius:4px;
+    text-decoration:none;
+    font-weight:700;
+    color:var(--white);
+    transition:background .3s;
+  }
+  .btn-tickets:hover{background:var(--pink-dark);}
+
+  /* ───────────────  HERO  ─────────────── */
+  .hero{
+    height:100vh;
+    background:url("fondo.png") center/cover fixed;
+    display:grid;
+    place-items:center;
+    text-align:center;
+    color:var(--white);
+    text-shadow:2px 2px 6px rgba(0,0,0,.75);
+    padding-inline:1rem;
+  }
+  .hero h1{
+    font-family:'Fredoka One',cursive;
+    font-size:clamp(2.2rem,7vw,7rem);
+    line-height:1.5;
+  }
+
+  /* ───────────────  UBICACIÓN  ─────────────── */
+.fondo {
+  background: linear-gradient(135deg, #6cc3ff 0%, #b664ff 40%, #ffa54b 100%);
+
+}
+
+.location {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  color: var(--white);
+  padding: 4rem 1rem;
+}
+.location-text {
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+.location-text h2 {
+  font-family: 'Fredoka One', cursive;
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+.location-text p {
+  font-size: 1.1rem;
+  margin-bottom: .5rem;
+}
+.location-map {
+  min-height: 300px;
+}
+.location-map iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  border-radius: 8px;
+}
+
+  /* ───────────────  FAQ  ─────────────── */
+.faq {
+  padding: 2rem;
+  width: 100%;        /* Ocupa el 100% del ancho del contenedor padre */
+  max-width: none;    /* Elimina la restricción de ancho máximo */
+  box-sizing: border-box;
+  color: white;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.4);
+}
+
+.faq h2 {
+  font-family: 'Fredoka One', cursive;
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 2rem;
+}
+
+.faq-question {
+  background: transparent;
+  color: white;
+  font-size: 1.1rem;
+  padding: 0.5rem;
+  width: 100%;
+  text-align: left;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.faq-question .icon {
+  font-size: 1.5rem;
+  padding: 0.5rem;
+  transition: transform 0.3s ease;
+}
+
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease, padding 0.3s ease;
+  font-size: 1rem;
+  line-height: 1.5;
+  border-radius: 8px;
+  text-align: center;
+  justify-content: center;
+  margin-top: 0.3rem;
+  color: white;
+}
+
+
+.faq-answer p {
+  padding: 1rem;
+  margin: 0;
+}
+
+
+  /* ───────────────  FOOTER  ─────────────── */
+  footer{
+    text-align:center;
+    padding:2rem 1rem;
+    background:rgba(0,0,0,.85);
+    font-size:.85rem;
+    color:var(--white);
+  }
+
+  /* ───────────────  RESPONSIVE  ─────────────── */
+  @media(max-width:768px){
+    .nav-links{gap:1rem;font-size:.75rem;}
+    .cards{gap:1.5rem;}
+  }
+  </style>
+</head>
+
+<body>
+
+  <!-- ───── NAVBAR ───── -->
+  <nav>
+    <div class="nav-links">
+      <a href="#start">Inicio</a>
+      <a href="#location">Lugar</a>
+      <a href="#faq">FAQ</a>
+    </div>
+    <a href="#entradas" class="btn-tickets">Comprar entradas</a>
+  </nav>
+
+  <!-- ───── HERO ───── -->
+  <header class="hero" id="start">
+      <div>
+        <h1>11 DE JULIO<br>SANXENXO<br>BOAT PARTY</h1>
+      </div>
+  </header>
+
+<!-- ───── UBICACIÓN ───── -->
+ <div class="fondo">
+<section class="location" id="location">
+  <div class="location-text">
+    <h2>📍 Lugar del Evento</h2>
+    <p><strong>Puerto Deportivo de Portonovo</strong></p>
+    <p>Salida: 11 de julio a las 18:30</p>
+    <p>Regreso: 22:30 aproximadamente</p>
+  </div>
+  <div class="location-map">
+    <iframe
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d20134.698693672915!2d-8.8344123122199!3d42.39491778903339!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd2f683a4d0e1a1f%3A0x675813c7f9d8f515!2sPorto%20de%20Portonovo!5e1!3m2!1ses!2ses!4v1751393328028!5m2!1ses!2ses"
+      width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"
+      referrerpolicy="no-referrer-when-downgrade">
+    </iframe>
+  </div>
+</section>
+
+<section class="faq" id="faq">
+  <h2>Preguntas Frecuentes</h2>
+  <div class="faq-item">
+    <button class="faq-question">¿Qué incluye la entrada?
+  <span class="icon">+</span></button>
+    <div class="faq-answer">
+      <p>Incluye acceso al barco y música con DJ en vivo durante todo el recorrido.</p>
+    </div>
+  </div>
+  <div class="faq-item">
+    <button class="faq-question">¿Puedo llevar mi propia bebida?
+  <span class="icon">+</span></button>
+    <div class="faq-answer">
+      <p>No. Habrá barra a bordo con bebidas frías y cócteles a buen precio.</p>
+    </div>
+  </div>
+  <div class="faq-item">
+    <button class="faq-question">¿Qué pasa si llueve?
+  <span class="icon">+</span></button>
+    <div class="faq-answer">
+      <p>El barco cuenta con zona cubierta, por lo que el evento se mantiene en casi cualquier condición.</p>
+    </div>
+  </div>
+  <div class="faq-item">
+    <button class="faq-question">¿Hay límite de edad?
+  <span class="icon">+</span></button>
+    <div class="faq-answer">
+      <p>Sí. Solo pueden acceder mayores de 18 años. Se pedirá DNI o identificación válida al embarcar.</p>
+    </div>
+  </div>
+  <div class="faq-item">
+  <button class="faq-question">¿Dónde puedo comprar las entradas?
+    <span class="icon">+</span>
+  </button>
+  <div class="faq-answer">
+    <p>Las entradas se pueden comprar exclusivamente a través de la página web o a través de nuestro perfil de instagram en los links que encontrareis.</p>
+  </div>
+</div>
+
+<div class="faq-item">
+  <button class="faq-question">¿Hay estacionamiento cerca ?
+    <span class="icon">+</span>
+  </button>
+  <div class="faq-answer">
+    <p>Sí, hay estacionamientos públicos cerca del puerto, pero recomendamos llegar con tiempo para encontrar espacio.</p>
+  </div>
+</div>
+
+<div class="faq-item">
+  <button class="faq-question">¿Qué medidas de seguridad se toman durante el evento?
+    <span class="icon">+</span>
+  </button>
+  <div class="faq-answer">
+    <p>Contamos con personal de seguridad capacitado, salvavidas y protocolos para garantizar la seguridad de todos los pasajeros.</p>
+  </div>
+</div>
+
+<div class="faq-item">
+  <button class="faq-question">¿Puedo solicitar una devolución si no puedo asistir?
+    <span class="icon">+</span>
+  </button>
+  <div class="faq-answer">
+    <p>Las entradas no son reembolsables, pero puedes transferirlas a otra persona notificándonos con anticipación.</p>
+  </div>
+</div>
+
+</section>
+ </div>
+  <!-- ───── FOOTER ───── -->
+  <footer>
+    © 2025 Galician Boat Party – Sanxenxo. Todos los derechos reservados.
+  </footer>
+<script>
+  const questions = document.querySelectorAll('.faq-question');
+
+  questions.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const answer = btn.nextElementSibling;
+      const icon = btn.querySelector('.icon');
+      const isOpen = answer.style.maxHeight;
+
+      // Cierra todos
+      document.querySelectorAll('.faq-answer').forEach(a => {
+        a.style.maxHeight = null;
+        a.style.paddingTop = '0';
+        a.style.paddingBottom = '0';
+      });
+
+      document.querySelectorAll('.faq-question .icon').forEach(i => {
+        i.textContent = '+';
+      });
+
+      // Abre actual si estaba cerrado
+      if (!isOpen || isOpen === '0px') {
+        answer.style.maxHeight = answer.scrollHeight + 'px';
+        icon.textContent = '−';
+      }
+    });
+  });
+</script>
+
+</body>
+</html>
