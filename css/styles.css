@@ -57,7 +57,7 @@
   /* Fondo para móviles */
 @media (max-width: 768px) {
   .hero {
-    background: url("images/fondo_movil.png") center/cover fixed;
+    background: url("../images/fondo_movil.png") center/cover fixed;
   }
 }
 
